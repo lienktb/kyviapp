@@ -1,0 +1,79 @@
+<CustomOneLineIconListItem>
+    IconLeftWidget:
+        icon: root.icon
+<HomeScreen>:
+    id: home
+    md_bg_color: utils.get_color_from_hex('#EAF5F9')
+    MDBoxLayout:
+        id: image_bg_box
+        size_hint_y: .4
+        pos_hint: {"top": 1}
+        padding: 20
+        MDCard:
+            elevation: 0
+            radius: [20,]
+            md_bg_color: utils.get_color_from_hex('#79CAE8')
+            MDBoxLayout:
+                padding: 10
+                orientation: 'vertical'
+                spacing: 20
+                size_hint: (.4, .3)
+                pos_hint: {'center_y': .5}
+                Label:
+                    color: utils.get_color_from_hex('#116294')
+                    text: "[b]WELCOM[/b]"
+                    font_size: '16sp'
+                    markup: True
+                Label:
+                    color: utils.get_color_from_hex('#116294')
+                    text: "[b]MY APP[/b]"
+                    font_size: '16sp'
+                    markup: True
+            Image:
+                id: image
+                source: "assets/images/bg1.png"
+                size_hint: None, None
+                size: self.parent.width, self.parent.height
+                size_hint: .9, 1
+                keep_ratio: True
+                pos_hint: {"x": .3}
+    MDBoxLayout:
+        padding: 20
+        size_hint: 1, 0.65
+        size: self.width, self.height
+        pos_hint: {'center_x': 0.5}
+
+        orientation: 'vertical'
+
+        MDTabs:
+            id: tabs
+            background_color: utils.get_color_from_hex('#EAF5F9')
+            text_color_normal: 0, 0, 1, .5
+            text_color_active: utils.get_color_from_hex('#116294')
+            color_indicator: 0.95, 0.95, 0.1, 1
+            lock_swiping: True
+            on_tab_switch: root.on_tab_switch(*args)
+            Tab:
+                text: "Mã hóa"
+                title: "Mã hóa"
+
+            Tab:
+                text: "RSA"
+                title: "RSA"
+            Tab:
+                text: "LSB"
+                title: "LSB"
+<Tab>
+    MDCard:
+
+        padding: 10
+        ScrollView:
+            id: scroll_view
+            do_scroll_x: False
+            MDLabel:
+                id: label
+                text: root.content_text
+                size_hint: 1, None
+                markup: True
+                size: self.texture_size
+
